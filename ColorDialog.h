@@ -7,28 +7,29 @@
 #include "ColorSelector.h"
 #include "ColorStage.h"
 
-class ColorDialog final : public QWidget {
-  Q_OBJECT
- public:
-  explicit ColorDialog(const QColor &color = QColor("#e83f55"),
-                       const int randomColorsCount = 40,
-                       QWidget *parent = nullptr);
+class ColorDialog final : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit ColorDialog(const QColor& color = QColor("#e83f55"),
+                         const int randomColorsCount = 40,
+                         QWidget* parent = nullptr);
 
-  QColor color() const;
+    QColor color() const;
 
- signals:
-  void colorChanged(const QColor &);
+signals:
+    void colorChanged(const QColor&);
 
- private slots:
-  void setColor(const QColor &color);
+private slots:
+    void setColor(const QColor& color);
 
- private:
-  QColor _color;
-  ColorSelector _colorSelector;
-  BasicColors _randomColors;
-  ColorStage _colorStage;
+private:
+    QColor _color;
+    ColorSelector _colorSelector;
+    BasicColors* _randomColors;
+    ColorStage _colorStage;
 
-  QGridLayout _gridLayout;
+    QGridLayout _gridLayout;
 };
 
-#endif  // COLORDIALOG_H
+#endif // COLORDIALOG_H
